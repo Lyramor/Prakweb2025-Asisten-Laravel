@@ -20,20 +20,22 @@ class Post extends Model
         'category_id',
     ];
 
+    // MODUL 2-1 START
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
-    // User.php
-    public function posts()
+    // Relasi belongsTo untuk User (author)
+    public function author()
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Post.php
+    // Tetap ada untuk backward compatibility
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    // MODUL 2-1 END
 }

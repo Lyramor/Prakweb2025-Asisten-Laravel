@@ -13,4 +13,12 @@ class Category extends Model
     protected $fillable = [
         'name',
     ];
+
+    // MODUL 2-1 START
+    // Relasi hasMany ke Post
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    // MODUL 2-1 END
 }
