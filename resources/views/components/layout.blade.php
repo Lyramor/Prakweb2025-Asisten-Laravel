@@ -21,6 +21,8 @@
                 class="{{ request()->is('blog') ? 'bg-gray-950/50' : '' }} rounded-md px-3 py-2 text-sm font-medium text-white">Blog</a>
             <a href="/posts"
                 class="{{ request()->is('posts') ? 'bg-gray-950/50' : '' }} rounded-md px-3 py-2 text-sm font-medium text-white">Posts</a>
+            <a href="/categories"
+                class="{{ request()->is('categories') ? 'bg-gray-950/50' : '' }} rounded-md px-3 py-2 text-sm font-medium text-white">Categories</a>
             <a href="/contact"
                 class="{{ request()->is('contact') ? 'bg-gray-950/50' : '' }} rounded-md px-3 py-2 text-sm font-medium text-white">Contact</a>
         </nav>

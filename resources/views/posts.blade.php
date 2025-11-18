@@ -15,9 +15,9 @@
             <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ $post->title }}</h2>
 
             <div class="flex items-center text-sm text-gray-600 mb-3">
-                // MODUL 2-1 START Menggunakan author relationship
+                {{-- MODUL 2-1 START Menggunakan author relationship --}}
                 <span class="mr-4">By {{ $post->author->name ?? 'Unknown' }}</span>
-                // MODUL 2-1 END
+                {{-- MODUL 2-1 END --}}
                 <span class="mr-4">Category: {{ $post->category->name ?? 'Uncategorized' }}</span>
                 <span>{{ $post->created_at->format('d M Y') }}</span>
             </div>
@@ -28,10 +28,10 @@
                 <p class="text-gray-600">{{ Str::limit($post->body, 200) }}</p>
             </div>
 
-            // MODUL 2-1 START Menggunakan route model binding dengan slug
+            {{-- MODUL 2-1 START Menggunakan route model binding dengan slug --}}
             <a href="{{ route('posts.show', $post->slug) }}"
                 class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">Read full post →</a>
-            // MODUL 2-1 END
+            {{-- MODUL 2-1 END --}}
         </article>
         @empty
         <div class="bg-gray-100 rounded-lg p-8 text-center">

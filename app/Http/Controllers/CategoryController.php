@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return ('Ini adalah CategoryController!');
+        // Mengambil semua kategori dengan jumlah posts
+        $categories = Category::withCount('posts')->get();
+        return view('categories', compact('categories'));
     }
 }

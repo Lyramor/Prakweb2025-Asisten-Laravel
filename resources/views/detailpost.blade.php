@@ -8,10 +8,10 @@
             <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ $post->title }}</h1>
 
             <div class="flex items-center text-sm text-gray-600 mb-4">
-                // MODUL 2-1 START Menggunakan author relationship untuk single post
+                {{-- MODUL 2-1 START Menggunakan author relationship untuk single post --}}
                 <span class="mr-4">By {{ $post->author->name ?? 'Unknown' }}</span>
                 <span class="mr-4">Category: {{ $post->category->name ?? 'Uncategorized' }}</span>
-                // MODUL 2-1 END
+                {{-- MODUL 2-1 END --}}
                 <span>{{ $post->created_at->format('d M Y') }}</span>
             </div>
 
