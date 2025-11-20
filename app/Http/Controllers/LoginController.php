@@ -25,7 +25,7 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             // Login berhasil
             $request->session()->regenerate();
-            return redirect()->intended('/posts');
+            return redirect()->intended('/dashboard');
         }
 
         // Login gagal

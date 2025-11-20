@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 // MODUL 2-2 START - Authentikasi Manual Sederhana
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardPostController;
 // MODUL 2-2 END
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +38,7 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 
 // Route logout - hanya untuk yang sudah login
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route untuk dashboard posts (resource controller) - hanya untuk yang sudah login
+Route::resource('/dashboard', DashboardPostController::class)->middleware(['auth', 'verified'])->name('dashboard', 'index');
 // MODUL 2-2 END
