@@ -62,12 +62,6 @@
             @error('image')
                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
-
-            {{-- Image Preview --}}
-            <div class="mt-3">
-                <p class="text-sm text-gray-600 mb-2">Preview:</p>
-                <img id="preview" class="w-32 h-32 rounded-base object-cover border border-default bg-gray-100" src="{{ asset('images/preview.jpg') }}" alt="Image preview">
-            </div>
         </div>
     </div>
 
@@ -81,14 +75,3 @@
         </a>
     </div>
 </form>
-
-<script>
-document.getElementById('image').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => document.getElementById('preview').src = e.target.result;
-        reader.readAsDataURL(file);
-    }
-});
-</script>

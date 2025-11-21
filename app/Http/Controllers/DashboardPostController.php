@@ -46,11 +46,13 @@ class DashboardPostController extends Controller
         // Validasi input dengan custom messages
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id', // Memastikan ID ada di tabel categories
             'excerpt' => 'required',
             'body' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
-        ], [
+            // Aturan untuk Image: Opsional (nullable), harus gambar, format tertentu, max 2MB
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ], 
+        [   // Custom Messages
             'title.required' => 'Field Title wajib diisi',
             'title.max' => 'Field Title tidak boleh lebih dari 255 karakter',
             'category_id.required' => 'Field Category wajib dipilih',
