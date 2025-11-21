@@ -34,6 +34,9 @@
                         No
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium">
+                        Image
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
                         Title
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium">
@@ -53,6 +56,17 @@
                         <td class="px-6 py-4">
                             {{ $posts->firstItem() + $loop->index }}
                         </td>
+                        <td class="px-6 py-4">
+                            @if($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-16 h-16 rounded-base object-cover">
+                            @else
+                                <div class="w-16 h-16 rounded-base bg-gray-200 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                            @endif
+                        </td>
                         <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
                             {{ $post->title }}
                         </th>
@@ -63,20 +77,12 @@
                             {{ $post->created_at->format('d M Y') }}
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex gap-2">
-                                <a href="{{ route('dashboard.show', $post->id) }}" class="text-blue-600 hover:underline">View</a>
-                                <a href="{{ route('dashboard.edit', $post->id) }}" class="text-yellow-600 hover:underline">Edit</a>
-                                <form action="{{ route('dashboard.destroy', $post->id) }}" method="POST" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:underline" onclick="return confirm('Yakin ingin menghapus post ini?')">Delete</button>
-                                </form>
-                            </div>
+                            <a href="{{ route('dashboard.show', $post->slug) }}" class="text-blue-600 hover:underline">View</a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-12 text-center text-gray-500">
+                        <td colspan="7" class="px-6 py-12 text-center text-gray-500">
                             No posts yet. <a href="{{ route('dashboard.create') }}" class="text-blue-600 hover:underline">Create one</a>
                         </td>
                     </tr>
